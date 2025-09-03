@@ -1,221 +1,579 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Avenash | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avenash | Portfolio</title>
 
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-    body { background: radial-gradient(circle at top left,#1a1a2e,#0d0d1a); color:#fff; line-height:1.6; scroll-behavior:smooth; }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    /* Navbar */
-    nav{ 
-      position:fixed; 
-      top:0; 
-      width:100%; 
-      background:rgba(13,13,26,.95); 
-      display:flex; 
-      justify-content:space-between; 
-      align-items:center; 
-      padding:15px 40px; 
-      z-index:1000; 
-      border-bottom:1px solid rgba(255,255,255,.1);
-    }
+        body {
+            background: radial-gradient(circle at top left, #1a1a2e, #0d0d1a);
+            color: #fff;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
 
-    .logo {
-      font-size:1.3rem;
-      font-weight:600;
-      color:#fff;
-      text-shadow:0 0 8px #9d4edd;
-    }
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 13, 26, .95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+        }
 
-    .nav-links {
-      display:flex; 
-      gap:30px;
-    }
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 0 0 8px #9d4edd;
+        }
 
-    .nav-links a {
-      color:#b0b0d0; 
-      text-decoration:none; 
-      font-weight:500; 
-      transition:.3s;
-    }
-    .nav-links a:hover {
-      color:#9d4edd; 
-    }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
 
-    /* Hero */
-    #hero{ height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:linear-gradient(145deg,#0d0d1a,#1a1a2e); }
-    #hero h1{ font-size:3.5rem; margin-bottom:15px; color:#fff; text-shadow:0 0 15px #7b2ff7; }
-    #hero p{ font-size:1.2rem; color:#b0b0d0; margin-bottom:25px; }
-    #hero button{ padding:12px 28px; border:none; background:linear-gradient(45deg,#7b2ff7,#ff4ecd); color:#fff; border-radius:30px; font-size:1rem; cursor:pointer; box-shadow:0 0 15px #7b2ff7; transition:.3s; }
-    #hero button:hover{ transform:scale(1.05); box-shadow:0 0 25px #ff4ecd; }
+        .nav-links a {
+            color: #b0b0d0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: .3s;
+        }
 
-    /* Sections */
-    section{ padding:80px 15%; border-bottom:1px solid rgba(255,255,255,.1); }
-    section h2{ font-size:2.5rem; margin-bottom:20px; text-align:center; text-shadow:0 0 12px #9d4edd; }
-    section p, section li{ font-size:1.1rem; color:#b0b0d0; text-align:center; }
+        .nav-links a:hover {
+            color: #9d4edd;
+        }
 
-    /* About */
-    #about ul{ list-style:none; margin-top:20px; display:flex; justify-content:center; gap:25px; flex-wrap:wrap; }
-    #about li{ background:#1a1a2e; padding:12px 20px; border-radius:10px; box-shadow:0 0 12px #7b2ff7; color:#fff; }
+        /* Hero */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(145deg, #0d0d1a, #1a1a2e);
+        }
 
-    /* Work */
-    #work .desc{ max-width:900px; margin:0 auto; }
-    #work button{ padding:12px 28px; border:none; background:linear-gradient(45deg,#7b2ff7,#ff4ecd); color:#fff; border-radius:30px; font-size:1rem; cursor:pointer; display:block; margin:22px auto 0; box-shadow:0 0 15px #7b2ff7; transition:.3s; }
-    #work button:hover{ transform:scale(1.05); box-shadow:0 0 25px #ff4ecd; }
+        .profile-photo-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #7b2ff7;
+            box-shadow: 0 0 20px rgba(123, 47, 247, 0.7);
+            margin-bottom: 25px;
+            animation: pulse 2s infinite ease-in-out;
+            cursor: pointer;
+            position: relative;
+        }
 
-    /* Contact */
-    form{ max-width:500px; margin:0 auto; display:flex; flex-direction:column; gap:15px; }
-    form input, form textarea{ padding:12px; border:none; border-radius:10px; outline:none; font-size:1rem; background:#1a1a2e; color:#fff; box-shadow:inset 0 0 8px #7b2ff7; }
-    form button{ padding:12px; border:none; border-radius:30px; background:linear-gradient(45deg,#7b2ff7,#ff4ecd); color:#fff; font-size:1rem; cursor:pointer; box-shadow:0 0 12px #9d4edd; }
-    form button:hover{ box-shadow:0 0 25px #ff4ecd; transform:scale(1.05); }
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
 
-    /* Social icons in Contact */
-    .social-icons {
-      margin-top: 30px;
-      text-align: center;
-    }
+        .profile-photo:hover {
+            transform: scale(1.1);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 10px rgba(123, 47, 247, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(123, 47, 247, 1);
+            }
+            100% {
+                box-shadow: 0 0 10px rgba(123, 47, 247, 0.7);
+            }
+        }
 
-    .social-icons a {
-      margin: 0 15px;
-      color: #fff;
-      font-size: 1.8rem;
-      transition: color 0.3s;
-    }
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 0 0 15px #7b2ff7;
+        }
 
-    .social-icons a:hover {
-      color: #ff4ecd;
-    }
+        #hero p {
+            font-size: 1.2rem;
+            color: #b0b0d0;
+            margin-bottom: 25px;
+        }
 
-    /* Back to Top */
-    #topBtn{ position:fixed; bottom:25px; right:25px; background:#7b2ff7; color:#fff; border:none; padding:12px 15px; border-radius:50%; cursor:pointer; box-shadow:0 0 12px #ff4ecd; display:none; }
-    #topBtn:hover{ background:#ff4ecd; }
+        #hero button {
+            padding: 12px 28px;
+            border: none;
+            background: linear-gradient(45deg, #7b2ff7, #ff4ecd);
+            color: #fff;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 0 15px #7b2ff7;
+            transition: .3s;
+        }
 
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      font-size: 1.8rem;
-      color: #fff;
-      cursor: pointer;
-    }
+        #hero button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ff4ecd;
+        }
 
-    @media (max-width:768px){
-      #hero h1{ font-size:2.5rem; }
-      section{ padding:60px 10%; }
-      .nav-links { gap:15px; }
+        /* Sections */
+        section {
+            padding: 80px 15%;
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+        }
 
-      .hamburger {
-        display: block;
-      }
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 0 12px #9d4edd;
+        }
 
-      .nav-links {
-        position: absolute;
-        top: 60px;
-        right: 40px;
-        background: #0d0d1a;
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 12px #7b2ff7;
-        display: none;
-      }
+        section p,
+        section li {
+            font-size: 1.1rem;
+            color: #b0b0d0;
+            text-align: center;
+        }
 
-      .nav-links.active {
-        display: flex;
-      }
-    }
-  </style>
+        /* About */
+        #about ul {
+            list-style: none;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        #about li {
+            background: #1a1a2e;
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px #7b2ff7;
+            color: #fff;
+        }
+
+        /* Work */
+        #work .desc {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        #work button {
+            padding: 12px 28px;
+            border: none;
+            background: linear-gradient(45deg, #7b2ff7, #ff4ecd);
+            color: #fff;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: block;
+            margin: 22px auto 0;
+            box-shadow: 0 0 15px #7b2ff7;
+            transition: .3s;
+        }
+
+        #work button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ff4ecd;
+        }
+
+        /* Mini Projects Section */
+        #mini-projects {
+            padding: 80px 15%;
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+            text-align: center;
+        }
+        
+        #mini-projects h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-shadow: 0 0 12px #9d4edd;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #1a1a2e;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 0 20px rgba(123, 47, 247, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(123, 47, 247, 0.5);
+        }
+
+        .project-card h3 {
+            color: #ff4ecd;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            color: #b0b0d0;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .project-card .project-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+            cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.03);
+        }
+
+        /* Modal (Pop-up) styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top */
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .modal-content, #caption {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)}
+            to {transform:scale(1)}
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .project-link {
+            display: inline-block;
+            color: #9d4edd;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: #fff;
+            text-shadow: 0 0 5px #ff4ecd;
+        }
+
+        /* Contact */
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        form input,
+        form textarea {
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            font-size: 1rem;
+            background: #1a1a2e;
+            color: #fff;
+            box-shadow: inset 0 0 8px #7b2ff7;
+        }
+
+        form button {
+            padding: 12px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(45deg, #7b2ff7, #ff4ecd);
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 0 12px #9d4edd;
+        }
+
+        form button:hover {
+            box-shadow: 0 0 25px #ff4ecd;
+            transform: scale(1.05);
+        }
+
+        /* Social icons in Contact */
+        .social-icons {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .social-icons a {
+            margin: 0 15px;
+            color: #fff;
+            font-size: 1.8rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ff4ecd;
+        }
+
+        /* Back to Top */
+        #topBtn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #7b2ff7;
+            color: #fff;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 12px #ff4ecd;
+            display: none;
+        }
+
+        #topBtn:hover {
+            background: #ff4ecd;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        @media (max-width:768px) {
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 60px 10%;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                right: 40px;
+                background: #0d0d1a;
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 12px #7b2ff7;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav>
-    <div class="logo">My Portfolio</div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div> <!-- Hamburger Icon -->
-    <div class="nav-links">
-      <a href="#hero">Home</a>
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">My Skills</a> <!-- Same section as About -->
+    <nav>
+        <div class="logo">My Portfolio</div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="nav-links">
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="profile-photo-container">
+            <img id="profile-photo" src="profile.avif" alt="Profile Photo" class="profile-photo" onclick="openModal('profile.avif')">
+        </div>
+        <h1>Hi, I'm Avenash</h1>
+        <p>Tech Innovator | Digital Marketer | Creative Developer</p>
+        <button onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">See My Work</button>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I'm Avenash, passionate about creating digital solutions that blend creativity and impact.
+            I build websites, automate processes, and optimize digital presence.
+        </p>
+        <ul>
+            <li>Python</li>
+            <li>No Code Web Development</li>
+            <li>Digital Marketing</li>
+            <li>SEO</li>
+        </ul>
+    </section>
+
+    <section id="work">
+        <h2>See My Work</h2>
+        <p class="desc">
+            I built a <strong>Career Finder</strong> website that guides you using the
+            <strong>Ikigai</strong> framework—discover your life purpose by aligning what you love,
+            what you’re good at, what the world needs, and what you can be paid for.<br><br>
+            Inside, you’ll find curated paths for <strong>mastering your craft</strong> (step-by-step learning),
+            <strong>productivity techniques</strong> to focus without distractions, and the best places
+            to <strong>learn each skill</strong> (free and paid). It also includes
+            <strong>resume-building templates</strong> so you can present your growth with confidence.
+        </p>
+        <button onclick="window.open('https://bravebrucewayne.wixsite.com/resumegen','_blank')">
+            Explore the Career Finder
+        </button>
+    </section>
+
+    <section id="mini-projects">
+        <h2>Mini Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Simple Portfolio Website using HTML</h3>
+                <img src="Assignment 2.jpg" alt="Simple Portfolio Website" class="project-image" onclick="openModal('Assignment 2.jpg')">
+                <p>A basic portfolio website showcasing fundamental HTML structuring for personal presentation.</p>
+            </div>
+            <div class="project-card">
+                <h3>Simple Registration Website</h3>
+                <img src="Assignment 4.jpg" alt="Simple Registration Website" class="project-image" onclick="openModal('Assignment 4.jpg')">
+                <p>A functional registration form demonstrating basic HTML input fields and form handling.</p>
+            </div>
+            <div class="project-card">
+                <h3>Simple Flip Card Website</h3>
+                <img src="Assignment 5.jpg" alt="Simple Flip Card Website" class="project-image" onclick="openModal('Assignment 5.jpg')">
+                <p>An interactive web page featuring flip cards, built using CSS for animations and transitions.</p>
+            </div>
+            <div class="project-card">
+                <h3>Simple Website With College Time Table</h3>
+                <img src="Assignment 3.jpg" alt="Simple Website With College Time Table" class="project-image" onclick="openModal('Assignment 3.jpg')">
+                <p>A straightforward website displaying a college timetable, useful for organizing class schedules.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div class="social-icons">
+            <a href="https://github.com/avenash-amjc" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/noviq._studios/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </section>
+
+    <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
     </div>
-  </nav>
 
-  <!-- Hero -->
-  <section id="hero">
-    <h1>Hi, I'm Avenash</h1>
-    <p>Tech Innovator | Digital Marketer | Creative Developer</p>
-    <button onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">See My Work</button>
-  </section>
+    <script>
+        // Get the modal
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm Avenash, passionate about creating digital solutions that blend creativity and impact.
-      I build websites, automate processes, and optimize digital presence.
-    </p>
-    <ul>
-      <li>Python</li>
-      <li>No Code Web Development</li>
-      <li>Digital Marketing</li>
-      <li>SEO</li>
-    </ul>
-  </section>
+        // Function to open the modal and display the image
+        function openModal(imageSrc) {
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+        }
 
-  <!-- Work -->
-  <section id="work">
-    <h2>See My Work</h2>
-    <p class="desc">
-      I built a <strong>Career Finder</strong> website that guides you using the
-      <strong>Ikigai</strong> framework—discover your life purpose by aligning what you love,
-      what you’re good at, what the world needs, and what you can be paid for.<br><br>
-      Inside, you’ll find curated paths for <strong>mastering your craft</strong> (step-by-step learning),
-      <strong>productivity techniques</strong> to focus without distractions, and the best places
-      to <strong>learn each skill</strong> (free and paid). It also includes
-      <strong>resume-building templates</strong> so you can present your growth with confidence.
-    </p>
-    <button onclick="window.open('https://bravebrucewayne.wixsite.com/resumegen','_blank')">
-      Explore the Career Finder
-    </button>
-  </section>
+        // Function to close the modal
+        function closeModal() {
+            modal.style.display = "none";
+        }
 
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+        // Close the modal when the user clicks anywhere outside of the image
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
 
-    <!-- Social Media Icons -->
-    <div class="social-icons">
-      <a href="https://github.com/avenash-amjc" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.instagram.com/noviq._studios?igsh=MWpkOTZkMWh0bnZ6Yw==" target="_blank"><i class="fab fa-instagram"></i></a>
-    </div>
-  </section>
+        // Show back-to-top button when scrolling
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('topBtn');
+            btn.style.display = (document.documentElement.scrollTop > 200) ? 'block' : 'none';
+        });
 
-  <!-- Back to Top -->
-  <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
-  <script>
-    // Show back-to-top button when scrolling
-    window.addEventListener('scroll', () => {
-      const btn = document.getElementById('topBtn');
-      btn.style.display = (document.documentElement.scrollTop > 200) ? 'block' : 'none';
-    });
-
-    // Toggle hamburger menu
-    function toggleMenu() {
-      document.querySelector('.nav-links').classList.toggle('active');
-    }
-  </script>
+        // Toggle hamburger menu
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
